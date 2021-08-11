@@ -9,6 +9,15 @@ public class Tasks1 {
         // Console input
         Scanner scanner = new Scanner(System.in);
 
+        // Announcement of Puppies
+        System.out.print("Selling puppies.\n");
+        System.out.print("Breed: Rottweiler.\n");
+        System.out.print("..................\n");
+        System.out.print("\n");
+        System.out.print("222\t|\t222|\t\n");
+        System.out.print("22\t|\t22|\t\n");
+        System.out.print("22\t|\t22|");
+
         // Task 1
         System.out.println("Task 1. Square");
         double a = scanner.nextDouble();

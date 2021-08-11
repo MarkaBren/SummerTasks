@@ -7,10 +7,10 @@ public class Tasks4 {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // task1();
-        // task2();
-        // task3();
-        // task4();
+        task1();
+        task2();
+        task3();
+        task4();
         task5();
 
     }

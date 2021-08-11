@@ -3,7 +3,7 @@ package com.company;
 import java.util.Scanner;
 
 public class Tasks6 {
-
+/*
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class Tasks6 {
         System.out.print("Enter number:");
         int nP = scanner.nextInt();
         System.out.println("Task 3. Is prime");
-        System.out.print(isPrime(nP) ? "Prime" : "Not prime");
+       // System.out.print(isPrime(nP) ? "Prime" : "Not prime");
         System.out.print("\n");
 
         // Task 4
@@ -82,9 +82,10 @@ public class Tasks6 {
         System.out.print("Factorial of" + n + " is " + res);
     }
 
-    public static boolean isPrime(int n){
-        for (int i = 2; i <= n; i++) if(n%i != 0) return true;
-        return false;
+    public static void isPrime(int n){
+        boolean is = false;
+        for (int i = 2; i <= n; i++) if(n%i != 0) is = true;
+            System.out.print( is ? "Prime" : "Not prime");
     }
 
     public static void displayCube(int n){
@@ -127,15 +128,15 @@ public class Tasks6 {
         }
     }
 
-    public static int numberOfPrimesInArray(int[] arr){
+    public static void numberOfPrimesInArray(int[] arr){
         System.out.println("Task 6. Display cube of the number");
         int n = 0;
 
         for (int i = 0; i < arr.length; i++) {
-            if(isPrime(arr[i])) n++;
+            //if(isPrime(arr[i])) n++;
         }
 
-        return n;
+        System.out.print("Number of primes is " + n);
     }
-
+*/
 }
