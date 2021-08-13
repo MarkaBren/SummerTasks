@@ -88,7 +88,7 @@ public class Tasks7 {
         sol[0][0] = 1;
 
         if (!solve(0, 0, 1, sol)) System.out.println("Solution does not exist");
-        else printSolution(sol);
+        printSolution(sol);
     }
 
     public static boolean solve(int x, int y, int moveNum,int sol[][]) {
