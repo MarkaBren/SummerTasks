@@ -3,10 +3,13 @@ package com.company;
 public class Tasks8 {
 
     public static void main(String[] args){
-        Circle c = new Circle();
-        c.radius = 5;
+        Circle c = new Circle(5);
         c.print();
         c.Show();
+        Circle c2 = new Circle(6);
+        c.print();
+        c.Show();
+        System.out.println("Number of circles is " + Circle.getCount());
 
         Conditioner conditioner = new Conditioner();
         conditioner.turnOnOff();
@@ -19,12 +22,24 @@ public class Tasks8 {
 
 class Conditioner {
 
-    public static String model = "Good";
-    public static int mode = 5;
-    public static int current = 20;
-    public static int power = 20;
-    public static int temperature = 20;
-    public static boolean state = false;
+    public String model = "Good";
+    public int mode = 0;
+    public int current = 20;
+    public int power = 20;
+    public int temperature = 20;
+    public boolean state = false;
+
+    Conditioner(){
+        state = false;
+    }
+
+    Conditioner(String model, int mode, int current, int power, int temperature){
+        this.model = model;
+        this.mode = mode;
+        this.current = current;
+        this.power = power;
+        this.temperature = temperature;
+    }
 
     public void show(String prop){
         switch(prop){
@@ -55,6 +70,11 @@ class Conditioner {
         state = !state;
     }
 
+    public void changeMode(int newMode){
+        if(newMode > 0 && newMode < 5) this.mode = newMode;
+        else System.out.println("Invalid mode");
+    }
+
     public void changeTemperature(int newTemperature){
         if(newTemperature > 5 && newTemperature < 24) temperature = newTemperature;
         else System.out.println("Invalid temperature");
@@ -65,11 +85,22 @@ class Conditioner {
         else System.out.println("Invalid power");
     }
 
+
+
 }
 
 class Circle {
     public String c = "";
-    public int radius;
+    private int radius;
+    private static int count = 0;
+
+    {
+     ++count;
+    }
+
+    Circle(int r){
+        this.radius = r;
+    }
 
     public String print(){
 
@@ -84,6 +115,14 @@ class Circle {
         }
 
         return c;
+    }
+
+    public static int getCount(){
+        return count;
+    }
+
+    public int getRadius(){
+        return radius;
     }
 
     public void ChangeSize(int newRadius){
