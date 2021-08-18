@@ -111,8 +111,6 @@ class Library {
 
     public void sortBooksByTitle(){
 
-        // sort string(Book.title) array alphabetically
-
         for (int i = 0; i < books.length-1; i++) {
             for (int j = 0; j < books.length-1; j++) {
                 if(Task9.getASCII(books[j].title.charAt(0))  < Task9.getASCII(books[j+1].title.charAt(0))){
