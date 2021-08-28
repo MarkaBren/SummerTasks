@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Task10;
 
 import java.util.ArrayList;
 
