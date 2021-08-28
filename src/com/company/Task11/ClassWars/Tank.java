@@ -1,17 +1,23 @@
 package com.company.Task11.ClassWars;
 
-import com.company.Task11.ClassWars.CombatVehicle;
-
 public class Tank extends CombatVehicle {
 
     private int reloadTime;
     private int shotAccuracy;
     private int armorThickness;
     private int appliedDamage = (100 * shotAccuracy / reloadTime);
-    private int health;
+    private int healthLoss = appliedDamage - armorThickness;
 
-    Tank(){
+    {
 
+    }
+
+    Tank(int reloadTime, int shotAccuracy, int armorThickness){
+        this.reloadTime = reloadTime;
+        this.shotAccuracy = shotAccuracy;
+        this.armorThickness = armorThickness;
+
+        super.name = "Tank";
     }
 
 }
