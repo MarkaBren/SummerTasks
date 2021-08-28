@@ -6,7 +6,6 @@ public class CombatVehicle {
     private int protection;
     private int health = 100;
 
-
     CombatVehicle(){
 
     }

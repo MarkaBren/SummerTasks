@@ -1,4 +1,4 @@
-package com.company.Task11.ClassWars.Vehicles;
+package com.company.Task11.ClassWars;
 
 import com.company.Task11.ClassWars.CombatVehicle;
 
