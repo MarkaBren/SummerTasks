@@ -8,7 +8,7 @@ public class ArmoredCar  extends CombatVehicle {
     private int healthLoss = super.getAttackDamage() - velocity/2;
 
 
-    ArmoredCar(int weaponCount, int velocity){
+    ArmoredCar(int weaponCount, int velocity, String team){
         this.weaponCount = weaponCount;
         this.velocity = velocity;
 

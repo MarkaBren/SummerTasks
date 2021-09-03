@@ -6,6 +6,7 @@ public class CombatVehicle {
     private int protection;
     private int health = 100;
     protected String name = "";
+    protected String team = "";
 
     CombatVehicle(){
 

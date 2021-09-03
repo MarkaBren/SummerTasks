@@ -6,7 +6,7 @@ public class ClassWars {
 
     public CombatVehicle[] teamOneArmy;
     public CombatVehicle[] teamTwoArmy;
-    public String winningTeam;
+    public String winningTeam = "";
 
     public Random r = new Random();
 
@@ -27,8 +27,8 @@ public class ClassWars {
     public int maxProtection = 50;
 
     {
-        teamOneArmy = new CombatVehicle[5 + r.nextInt(5)];
-        teamTwoArmy = new CombatVehicle[5 + r.nextInt(5)];
+        teamOneArmy = new CombatVehicle[1/*5 + r.nextInt(5)*/];
+        teamTwoArmy = new CombatVehicle[1/*5 + r.nextInt(5)*/];
     }
 
     ClassWars(){
@@ -36,9 +36,12 @@ public class ClassWars {
     }
 
     public void startGame(){
+        fillArmies();
         while (!isEndOfGame()){
             round(teamOneArmy, teamTwoArmy);
         }
+        winningTeam = determineWinningTeam(teamOneArmy);
+        if(winningTeam == "") winningTeam = determineWinningTeam(teamTwoArmy);
     }
 
     public void round(CombatVehicle[] one, CombatVehicle[] two){
@@ -53,19 +56,19 @@ public class ClassWars {
 
     public void fillArmies(){
         for (int i = 0; i < teamOneArmy.length; i++) {
-            teamOneArmy[i] = addRandomVehicle();
+            teamOneArmy[i] = addRandomVehicle("Blue");
         }
         for (int i = 0; i < teamTwoArmy.length; i++) {
-            teamTwoArmy[i] = addRandomVehicle();
+            teamTwoArmy[i] = addRandomVehicle("Red");
         }
     }
 
-    public CombatVehicle addRandomVehicle(){
+    public CombatVehicle addRandomVehicle(String team){
 
         CombatVehicle[] possibleVehicles = new CombatVehicle[] {
-                new Tank(1 + r.nextInt(maxTankReloadTime), 1 + r.nextInt(maxTankShotAccuracy), 1 + r.nextInt(maxTankArmorThickness)),
-                new ArmoredCar(1 + r.nextInt(maxCarWeaponCount), 1 + r.nextInt(maxCarVelocity)),
-                new AirDefenceVehicle( 1 + r.nextInt(maxAirDefenceRange), 1 + r.nextInt(maxAirDefenceShootSpeed), 1 + r.nextInt(maxAirDefenceMobility) )
+                new Tank(1 + Math.abs(r.nextInt(maxTankReloadTime)) , 1 + Math.abs(r.nextInt(maxTankShotAccuracy)), 1 + Math.abs(r.nextInt(maxTankArmorThickness)), team),
+                new ArmoredCar(1 + Math.abs(r.nextInt(maxCarWeaponCount)), 1 + Math.abs(r.nextInt(maxCarVelocity)), team),
+                new AirDefenceVehicle( 1 + Math.abs(r.nextInt(maxAirDefenceRange)), 1 + Math.abs(r.nextInt(maxAirDefenceShootSpeed)), 1 + Math.abs(r.nextInt(maxAirDefenceMobility)), team )
         };
         for (int i = 0; i < possibleVehicles.length; i++) {
             possibleVehicles[i].setAttackAndProtection(1+r.nextInt(maxAttackDamage), r.nextInt(maxProtection));
@@ -79,14 +82,24 @@ public class ClassWars {
     }
 
     public boolean isDestroyedArmy(CombatVehicle[] army){
-        for(int i = 0; i < army.length; i++)
-            if(army[i].isDestroyed()) return false;
+        for(int i = 0; i < army.length; i++) {
+            if (!army[i].isDestroyed()) return false;
+        }
 
         return true;
     }
 
-    public void displayWinner(){
+    public String determineWinningTeam(CombatVehicle[] army){
+        for(int i = 0; i < army.length; i++) {
+            if (!army[i].isDestroyed()) return "";
+        }
+        return army[0].team;
+    }
 
+    public void displayWinner(){
+        if(isEndOfGame()){
+            System.out.println("The winner is " + winningTeam);
+        }
     }
 
 
